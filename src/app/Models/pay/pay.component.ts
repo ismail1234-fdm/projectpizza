@@ -21,8 +21,6 @@ export class PayComponent implements OnInit {
   selectedPizzas: PizzaElement[] = [];
   dataSource;
 
-
-
   private subcription: Subscription;
 
   cancel=false;
