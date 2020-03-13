@@ -44,69 +44,63 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { PizzaComponent } from './Models/pizza/pizza.component';
-import { PayComponent } from './Models/pay/pay.component';
-import { AppRoutingModule} from './app-routing.module';
-import { PayService } from 'src/Services/pay.service';
-import { PizzaService } from 'src/Services/pizza.service';
+import { PizzaComponent } from './components/pizza/pizza.component';
+import { PayComponent } from './components/pay/pay.component';
+import { AppRoutingModule } from './app-routing.module';
+import { PayService } from 'src/app/services/pay.service';
+import { PizzaService } from 'src/app/services/pizza.service';
 
 @NgModule({
-  declarations: [
-  AppComponent,
-  PizzaComponent,
-  PayComponent
-  ],
+  declarations: [AppComponent, PizzaComponent, PayComponent],
   imports: [
-      AppRoutingModule,
-      BrowserModule,
-      A11yModule,
-      ClipboardModule,
-      CdkStepperModule,
-      CdkTableModule,
-      CdkTreeModule,
-      DragDropModule,
-      MatAutocompleteModule,
-      MatBadgeModule,
-      MatBottomSheetModule,
-      MatButtonModule,
-      MatButtonToggleModule,
-      MatCardModule,
-      MatCheckboxModule,
-      MatChipsModule,
-      MatStepperModule,
-      MatDatepickerModule,
-      MatDialogModule,
-      MatDividerModule,
-      MatExpansionModule,
-      MatGridListModule,
-      MatIconModule,
-      MatInputModule,
-      MatListModule,
-      MatMenuModule,
-      MatNativeDateModule,
-      MatPaginatorModule,
-      MatProgressBarModule,
-      MatProgressSpinnerModule,
-      MatRadioModule,
-      MatRippleModule,
-      MatSelectModule,
-      MatSidenavModule,
-      MatSliderModule,
-      MatSlideToggleModule,
-      MatSnackBarModule,
-      MatSortModule,
-      MatTableModule,
-      MatTabsModule,
-      MatToolbarModule,
-      MatTooltipModule,
-      MatTreeModule,
-      PortalModule,
-      ScrollingModule,
-      NoopAnimationsModule,
-      
-    ],
-  
-  providers: [PayService,PizzaService],  //Services are written here
+    AppRoutingModule,
+    BrowserModule,
+    A11yModule,
+    ClipboardModule,
+    CdkStepperModule,
+    CdkTableModule,
+    CdkTreeModule,
+    DragDropModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatStepperModule,
+    MatDatepickerModule,
+    MatDialogModule,
+    MatDividerModule,
+    MatExpansionModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatMenuModule,
+    MatNativeDateModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatRadioModule,
+    MatRippleModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSliderModule,
+    MatSlideToggleModule,
+    MatSnackBarModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatTreeModule,
+    PortalModule,
+    ScrollingModule,
+    NoopAnimationsModule
+  ],
+  providers: [PayService, PizzaService], // Services are written here
   bootstrap: [AppComponent]
 })
 export class AppModule { }

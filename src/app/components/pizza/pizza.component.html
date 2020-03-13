@@ -1,10 +1,10 @@
-<H3 class="header">Pizza App</H3>
- 
+<H3 class="header">Select your Pizzas</H3>
+
  <mat-form-field>
   <mat-label>Filter</mat-label>
   <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
 </mat-form-field>
- 
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
   <!-- Checkbox Column -->
@@ -15,7 +15,7 @@
                     [indeterminate]="selection.hasValue() && !isAllSelected()"
                     [aria-label]="checkboxLabel()">
       </mat-checkbox>
-    </th> 
+    </th>
     <td mat-cell *matCellDef="let row">
       <mat-checkbox (click)="$event.stopPropagation()"
                     (change)="$event ? selectRow($event,row):null"
@@ -58,7 +58,7 @@
   </tr>
 </table>
 
-<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLasButtons></mat-paginator> 
+<mat-paginator [pageSizeOptions]="[5,10,20]" showFirstLasButtons></mat-paginator>
 
 <mat-dialog-actions align="end">
 <button mat-button (click)="onCancel()">Cancel</button>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PizzaElement } from 'src/app/Models/pizza/pizzaList';
+import { PizzaElement } from 'src/app/interfaces/pizza-element.interface';
 
 @Injectable({
   providedIn: 'root'

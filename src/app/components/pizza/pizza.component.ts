@@ -2,20 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
-import { PizzaElement } from 'src/app/Models/pizza/pizzaList';
-import { PizzaService } from 'src/Services/pizza.service';
+import { PizzaElement } from 'src/app/interfaces/pizza-element.interface';
+import { PizzaService } from 'src/app/services/pizza.service';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { PayService } from 'src/Services/pay.service';
+import { PayService } from 'src/app/services/pay.service';
 
+// todo: Bug fix: selected pizzas aren't recreated on init
+//
 @Component({
   selector: 'app-pizza',
   templateUrl: './pizza.component.html',
   styleUrls: ['./pizza.component.css']
 })
 export class PizzaComponent implements OnInit {
-
-
-
   title = 'pizzaproject';
   ELEMENT_DATA: PizzaElement[];
 
@@ -28,19 +27,19 @@ export class PizzaComponent implements OnInit {
 
   dataSource;
 
-  constructor(private _pizzaservice: PizzaService, private _payService: PayService) {
+  constructor(
+    private _pizzaservice: PizzaService,
+    private _payService: PayService
+  ) { }
 
-  }
-
-
-  ngOnInit() { // we should call the service eher in ngOnInit()
+  ngOnInit() {
+    // we should call the service eher in ngOnInit()
     this.ELEMENT_DATA = this._pizzaservice.getPizza();
     this.dataSource = new MatTableDataSource<PizzaElement>(this.ELEMENT_DATA);
     this.dataSource.paginator = this.paginator;
   }
 
   // dataSource = new MatTableDataSource<PizzaElement>(this.ELEMENT_DATA);
-
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
@@ -56,9 +55,9 @@ export class PizzaComponent implements OnInit {
 
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle($event) {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
+    this.isAllSelected()
+      ? this.selection.clear()
+      : this.dataSource.data.forEach(row => this.selection.select(row));
   }
 
   /** The label for the checkbox on the passed row */
@@ -66,19 +65,18 @@ export class PizzaComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
+    return `${
+      this.selection.isSelected(row) ? 'deselect' : 'select'
+      } row ${row.position + 1}`;
   }
-
-
-
 
   selectRow($event: MatCheckboxChange, pizzaElement: PizzaElement) {
     if ($event.checked) {
       this._payService.addPizza(pizzaElement);
 
-      //this.selectedPizzas.push(pizzaElement);      
-      //this.chosenPizza=this.dataSource.filter(pizza=> (pizza.position===this.selectedPizzaids));
-      //this.selectedPizza = [...this.selectedPizza, dataSource.position];
+      // this.selectedPizzas.push(pizzaElement);
+      // this.chosenPizza=this.dataSource.filter(pizza=> (pizza.position===this.selectedPizzaids));
+      // this.selectedPizza = [...this.selectedPizza, dataSource.position];
     }
   }
 
@@ -91,7 +89,4 @@ export class PizzaComponent implements OnInit {
     this.selection.clear();
     this.selectedPizzas = [];
   }
-
-
-
 }

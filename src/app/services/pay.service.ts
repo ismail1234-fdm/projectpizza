@@ -1,6 +1,6 @@
 import { Injectable, Optional } from '@angular/core';
-import { PizzaComponent } from 'src/app/Models/pizza/pizza.component';
-import { PizzaElement } from 'src/app/Models/pizza/pizzaList';
+import { PizzaComponent } from 'src/app/components/pizza/pizza.component';
+import { PizzaElement } from 'src/app/interfaces/pizza-element.interface';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 
@@ -16,13 +16,13 @@ export class PayService {
   pizzaSubject: BehaviorSubject<PizzaElement[]> = new BehaviorSubject(this.arrayPizza);
   pizzaObservable: Observable<PizzaElement[]> = this.pizzaSubject.asObservable();
 
-  
-  
+
+
 
   constructor() { }
 
 
-  
+
   getSelectedPizzas(): PizzaElement[] {
     return this.arrayPizza;
   }
@@ -35,8 +35,8 @@ export class PayService {
 
 
 
-  removeSelectedPizza():void { 
-  this.arrayPizza=[];    
+  removeSelectedPizza():void {
+  this.arrayPizza=[];
   console.log(this.arrayPizza);
   }
 }
