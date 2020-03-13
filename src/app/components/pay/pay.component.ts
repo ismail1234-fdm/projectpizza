@@ -1,6 +1,6 @@
 import { Component, OnInit,OnDestroy } from '@angular/core';
-import { PizzaElement } from '../pizza/pizzaList';
-import { PayService } from 'src/Services/pay.service';
+import { PizzaElement } from '../../interfaces/pizza-element.interface';
+import { PayService } from 'src/app/services/pay.service';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { ValueConverter } from '@angular/compiler/src/render3/view/template';
@@ -19,7 +19,7 @@ export class PayComponent implements OnInit {
   constructor(private servicepay: PayService) { }
 
   selectedPizzas: PizzaElement[] = [];
-  
+
   dataSource;
 
   private subcription: Subscription;
@@ -28,13 +28,13 @@ export class PayComponent implements OnInit {
   ngOnInit(): void {
 
       this.subcription= this.servicepay.pizzaObservable.subscribe(
-      
+
       (pizzaElements: PizzaElement[])=>{
       this.selectedPizzas = pizzaElements;
       this.dataSource = new MatTableDataSource<PizzaElement>(this.selectedPizzas);
-    
+
     });
-    
+
   }
 
   ngOnDestroy()
@@ -54,7 +54,7 @@ export class PayComponent implements OnInit {
     return this.selectedPizzas.map(t => t.price).reduce((acc, value) => acc + value, 0);
   }
 
- 
+
 
 
 }
