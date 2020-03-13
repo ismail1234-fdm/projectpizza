@@ -19,11 +19,11 @@ export class PayComponent implements OnInit {
   constructor(private servicepay: PayService) { }
 
   selectedPizzas: PizzaElement[] = [];
+  
   dataSource;
 
   private subcription: Subscription;
 
-  cancel=false;
 
   ngOnInit(): void {
 
